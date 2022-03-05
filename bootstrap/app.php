@@ -63,6 +63,7 @@ $app->singleton(
 
 $app->configure('auth');
 $app->configure('service');
+$app->configure('app');
 
 /*
 |--------------------------------------------------------------------------
