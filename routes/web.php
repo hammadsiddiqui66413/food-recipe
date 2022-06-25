@@ -22,6 +22,15 @@ $router->get('/', function () use ($router) {
 $router->post('/api/register', 'AuthController@register');
 $router->post('/api/login', 'AuthController@login');
 
-$router->group(['prefix' => 'api' ], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => ['auth']], function () use ($router) {
+    $router->get('/categories', 'PagesController@categories');
+    $router->get('/recipes', 'PagesController@recipes');
+    $router->get('/recipe-detail', 'PagesController@recipeDetail');
+    $router->get('/search-recipe', 'TaskController@searchRecipe');
+    $router->get('/like-recipe/{id}', 'TaskController@likeRecipe');
+    $router->get('/rate-recipe/{id}', 'TaskController@rateRecipe');
+    $router->post('/store-review/{id}', 'TaskController@storeReview');
+    $router->get('/add-watch-later/{id}', 'TaskController@addToWatchLater');
+    $router->get('/download-recipe-pdf/{id}', 'TaskController@downloadRecipePdf');
 
 });
